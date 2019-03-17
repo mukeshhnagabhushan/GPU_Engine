@@ -1,0 +1,192 @@
+<html>
+<head>
+    <title>
+        GPU Comparison
+    </title>
+<style>
+      body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+h1 {
+  color:#6e2020;
+}
+p {
+  color: black;
+}
+.header {
+  padding: 10px;
+  text-align: left;
+  background-color: #a29585;
+  color: black;
+  font-size: 30px;
+  font-family:Trebuchet MS;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+.main {
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  font-family:Courier New ;
+   color:#6e2020;
+}
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+.container {
+  border-radius: 20px;
+  background-color: #dfd5cd;
+  padding: 20px;
+ width: 950px;
+ margin: auto;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+margin-top: 6px;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-size: 120%;
+}
+input[type=Date], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+font-size: 120%;
+}
+
+
+input[type=submit] {
+  background-color: #8b7b7b;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+  text-align: centre;
+}
+
+input[type=submit]:hover {
+  background-color: #858585;
+}
+.chkbox{
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 120%;
+}
+input[type=checkbox] {
+    zoom: 1.5;
+}
+label{
+font-size: 120%;
+}
+#tables {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 950px;
+  margin: auto;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#tables td, #tables th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tables tr:nth-child(even){background-color: #f2f2f2;}
+
+#tables tr:hover {background-color: #ddd;}
+
+#tables th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #8b7b7b;
+  color: white;
+}
+</style>
+</head>
+<div class="header">
+<h3>GPU model Data store</h3>
+</div>
+
+<div class="navbar">
+    <a href="{{ logout_url }}" class="right">Logout</a>
+</div>
+<body>
+<div class="main">
+<h1>GPU model features</h1>
+</div>
+</div>
+<table id="tables">
+      <tr>
+
+      <th > Name </th>
+      <th >Manufacturer</th>
+      <th >Date</th>
+      <th >Features</th>
+
+   </tr>
+
+{% for i in range(Gpuvalue) %}
+   {% for i in GpuCompare[i] %}
+
+
+   <tr>
+       <td>{{i.name}}</td>
+        <td>{{i.manufacturer}}</td>
+        <td>{{i.date}}</td>
+      <td>GeometryShader:{{i.geometryShader}}</br>
+      tesselationShader:{{i.tesselationShader}}</br>
+      shaderInt16:{{i.shaderInt16 }}</br>
+      sparseBinding:{{i.sparseBinding}}</br>
+      textureCompressionETC2:{{i.textureCompressionETC2}}</br>
+      vertexPipelineStoresAndAtomics:{{i.vertexPipelineStoresAndAtomics}}</td>
+
+   </tr>
+   {% endfor %}
+{% endfor %}
+
+
+</table>
+{% if CompareError %}
+<p style="color:red">
+    {{ CompareError }}
+</p>
+{% endif %}
+</body>
+</html>

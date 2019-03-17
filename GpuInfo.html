@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPU details</title>
+<style>
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+h1 {
+  color:#6e2020;
+}
+p {
+  color: red;
+}
+.header {
+  padding: 10px;
+  text-align: left;
+  background-color: #a29585;
+  color: black;
+  font-size: 30px;
+  font-family:Trebuchet MS;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+.main {
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  font-family:Courier New ;
+   color:#6e2020;
+}
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+.container {
+  border-radius: 20px;
+  background-color: #dfd5cd;
+  padding: 20px;
+ width: 950px;
+ margin: auto;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+margin-top: 6px;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-size: 120%;
+}
+input[type=Date], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+font-size: 120%;
+}
+
+
+input[type=submit] {
+  background-color: #8b7b7b;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+  text-align: centre;
+}
+
+input[type=submit]:hover {
+  background-color: #858585;
+}
+.chkbox{
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 120%;
+}
+input[type=checkbox] {
+    zoom: 1.5;
+}
+label{
+font-size: 120%;
+
+width: 50%;
+  padding: 12px;
+}
+
+</style>
+</head>
+<br>
+<div class="header">
+<h3>GPU model Data store</h3>
+</div>
+<div class="navbar">
+    <a href="{{ logout_url }}" class="right">Logout</a>
+
+</div>
+
+<div class="main">
+<h3>GPU model Details</h3>
+</div>
+<div class="container">
+<label>Name         </label><input type="text" value="{{ keyGpu.name }}" readonly> <br/>
+<label>Manufacturer </label><input type="text" value="{{ keyGpu.manufacturer }}"readonly/><br/>
+<label>Date         </label><input type="text" value="{{ keyGpu.date }}" readonly/><br/>
+<div style="text-align: center">
+
+    <label>geometryShader:</label>{{ keyGpu.geometryShader }}<br/><br/>
+<label>tesselationShader:</label> {{ keyGpu.tesselationShader }}<br/><br/>
+<label>shaderInt16:</label> {{ keyGpu.shaderInt16 }}<br/><br/>
+<label>sparseBinding:</label> {{ keyGpu.sparseBinding }}<br/><br/>
+<label>textureCompressionETC2:</label> {{ keyGpu.textureCompressionETC2 }}<br/><br/>
+<label>vertexPipelineStoresAndAtomics:</label> {{ keyGpu.vertexPipelineStoresAndAtomics }}<br/><br/>
+
+
+<b>To update GPU model</b> <a href="/UpdateGpu?name={{keyGpu.name}}">click here</a>
+<br/></br>
+
+<form  action="/" method="get">
+
+    <input type="submit" name="button" value="Cancel"/>
+
+</form>
+</div>
+</div>
+    </body>
+</html>

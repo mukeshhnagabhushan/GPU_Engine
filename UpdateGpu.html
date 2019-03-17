@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit your gpu</title>
+    <style>
+      body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+h1 {
+  color:#6e2020;
+}
+p {
+  color: black;
+}
+.header {
+  padding: 10px;
+  text-align: left;
+  background-color: #a29585;
+  color: black;
+  font-size: 30px;
+  font-family:Trebuchet MS;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+.main {
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  font-family:Courier New ;
+   color:#6e2020;
+}
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+.container {
+  border-radius: 20px;
+  background-color: #dfd5cd;
+  padding: 20px;
+ width: 950px;
+ margin: auto;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+margin-top: 6px;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-size: 120%;
+}
+input[type=Date], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+font-size: 120%;
+}
+
+
+input[type=submit] {
+  background-color: #8b7b7b;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+  text-align: centre;
+}
+
+input[type=submit]:hover {
+  background-color: #858585;
+}
+.chkbox{
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 120%;
+}
+input[type=checkbox] {
+    zoom: 1.5;
+}
+label{
+font-size: 120%;
+}
+</style>
+</head>
+<body>
+Edit your Gpu below<br/>
+<div class="header">
+<h3>GPU model Data store</h3>
+</div>
+<div class="navbar">
+    <a href="{{ logout_url }}" class="right">Logout</a>
+
+</div>
+<div class="container">
+<form  action="/UpdateGpu" method="post">
+
+      <p>Name :  <input type="text" name="name" value="{{keyGpu.name}}" readonly/>
+            <br/></p>
+      <p>Manufacturer:  <input type="text" name="manufacturer" value="{{ keyGpu.manufacturer }}"/>
+            <br/></p>
+      <p>Date : <input type="date" name="date" value="{{ keyGpu.date }}"/>
+            <br/></p>
+
+            {% if keyGpu.geometryShader %}
+            Geometry Shader: <input type="checkbox" name="geometryShader" value="{{keyGpu.geometryShader}}" checked />
+            {% else %}
+            Geometry Shader : <input type="checkbox" name="geometryShader" value="{{keyGpu.geometryShader}}"/>
+            {% endif %}<br/>
+
+            {% if keyGpu.tesselationShader %}
+            Tesselation Shader : <input type="checkbox" name="tesselationShader" value="{{keyGpu.tesselationShader}}" checked />
+            {% else %}
+            Tesselation Shader : <input type="checkbox" name="tesselationShader" value="{{mygpu.tesselationShader}}"/>
+            {% endif %}<br/>
+
+            {% if keyGpu.shaderInt16 %}
+            shader Int16 : <input type="checkbox" name="shaderInt16" value="{{keyGpu.shaderInt16}}" checked />
+            {% else %}
+            shader Int16 : <input type="checkbox" name="shaderInt16" value="{{keyGpu.shaderInt16}}"/>
+            {% endif %}<br/>
+
+            {% if keyGpu.sparseBinding %}
+            sparse Binding : <input type="checkbox" name="sparseBinding" value="{{keyGpu.sparseBinding}}" checked />
+            {% else %}
+            sparse Binding : <input type="checkbox" name="sparseBinding" value="{{keyGpu.sparseBinding}}"/>
+            {% endif %}<br/>
+
+            {% if keyGpu.textureCompressionETC2  %}
+            Texture Compression ETC2 : <input type="checkbox" name="textureCompressionETC2" value="{{keyGpu.textureCompressionETC2}}" checked />
+            {% else %}
+            Texture Compression ETC2 : <input type="checkbox" name="textureCompressionETC2" value="{{keyGpu.textureCompressionETC2}}"/>
+            {% endif %}<br/>
+
+            {% if keyGpu.vertexPipelineStoresAndAtomics %}
+            Vertex Pipe Line Stores And Atomics : <input type="checkbox" name="vertexPipelineStoresAndAtomics" value="{{keyGpu.vertexPipelineStoresAndAtomics}}" checked />
+            {% else %}
+            Vertex Pipe Line Stores And Atomics : <input type="checkbox" name="vertexPipelineStoresAndAtomics" value="{{keyGpu.vertexPipelineStoresAndAtomics}}"/>
+            {% endif %}<br/>
+
+
+      <input type="submit" name="button" value="update"/>
+</form><br/><br/>
+<form  action="/UpdateGpu" method="post">
+
+      <input type="submit" name="button" value="Cancel"/>
+
+</form>
+      </div>
+</body>
+</html>

@@ -142,6 +142,7 @@ class GpuMain(webapp2.RequestHandler):
                 }
                 template = JINJA_ENVIRONMENT.get_template('GpuMain.html')
                 self.response.write(template.render(template_values))
+                self.redirect('/')
 
         elif action == "GpuCompare":
             self.response.headers['Content-Type'] = 'text/html'
@@ -174,11 +175,15 @@ class GpuMain(webapp2.RequestHandler):
                 self.response.write(template.render(template_values))
 
             else:
-                Gpu_details = GpuModel.query().fetch(keys_only=True)
+                Gpu_info = GpuModel.query().fetch(keys_only=True)
                 template_values = {
                     'CompareError': 'Invalid selection',
-                    'gpu_db': Gpu_details
+                    'gpu_db': Gpu_info
                 }
+                template = JINJA_ENVIRONMENT.get_template('GpuMain.html')
+
+                self.response.write(template.render(template_values))
+                self.redirect('/')
 app = webapp2.WSGIApplication([
     ('/', GpuMain),
     ('/GpuInfo', Gpuinfo),

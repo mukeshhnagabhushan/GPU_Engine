@@ -152,6 +152,7 @@ font-size: 120%;
 <h1>GPU model features</h1>
 </div>
 </div>
+<form action="/GpuCompare" method="post">
 <table id="tables">
       <tr>
 
@@ -181,12 +182,10 @@ font-size: 120%;
    {% endfor %}
 {% endfor %}
 
+}
 
 </table>
-{% if CompareError %}
-<p style="color:red">
-    {{ CompareError }}
-</p>
-{% endif %}
+ </form>
 </body>
+
 </html>
